@@ -1,138 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Converter</title>
+    <title>Portfolio Website</title>
     <style>
-        * {
+        *{
             margin: 0;
-            padding: 0; 
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8edeb;
+            color: #6d6875;
+            font-family: 'Poppins', sans-serif;
         }
 
-        body {
-        background-image: url('pexels-maria-orlova-4969836.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        }
-
-        .vcenter{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100vh;
-        }
-        .title{
-            font-size: 2.5rem;
-            display: flex;
-            justify-content: center;
+        .navbar,.navbar h1,.navbar div,.navbar ul{
+            background-color: #6d6875;
             color: white;
         }
-        .main {
-            margin: 0 auto;
+        .navbar{
             display: flex;
-            flex-direction: column;
+            height: 60px;
+            justify-content: space-between;
+            padding: 1%;
             align-items: center;
-            border: 2px solid black;
+            width: 100%;
+        }
+
+        .navbar ul{
+            display: flex;
+            justify-content: space-around;
+            width: 600px;
+        }
+
+        .navbar ul li{
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li a{
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            background-color: #6d6875;
+        }
+        .main{
+            display: flex;
+            padding: 100px;
+            margin: 0 auto;
+            width: 900px;
+        }
+
+        .item1{
+            padding: 1%;
+        }
+        .item1 h1{
+            margin-bottom: 10px;
+        }
+
+        .item1 p{
+            width: 500px;
+            text-align: justify;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+
+        .accounts ul{
+            display: flex;
+            list-style: none;
+        }
+
+        .accounts ul li a{
+            width: 85px;
+            height: 40px;
+            background-color: #6d6875;
+            color: white;
+            display: block;
+            border-radius: 0.5cm;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid;
+            padding: 10px;
+            margin: auto;
+            margin-left: 10px;
+            text-align: center;
+        }
+        .profile_photo img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        
+
+        .edu_details,.skills,.projects{
+            margin: 0 auto;
+            width: 1000px;
+            padding: 10px;
+        }
+
+        .edu_details div,.edu_details p{
+            background-color: #d3add8;
+            color: rgb(99, 48, 114);
+            
+            
+        }
+
+        .edu_details h1,.edu_details div{
+            padding: 10px;
+        }
+        .grades{
+            display: flex;
+            border: 1px solid black;
             border-radius: 10px;
-            width: 400px;
-            margin-top: 10px; 
-            color: black;
-                        font-weight: bold;
-            font-size: 1.6rem;    
         }
 
-        .title{
-            -webkit-text-stroke: 1.75px;
-            -webkit-text-stroke-color: black;
-            font-family: Arial;
+        .gg{
+            margin-right: 30px;
         }
-        .main select,
-        .main input,
-        .main button,
-        .main p {
-            margin: 10px;   
+        .skills_flex{
+            display: flex;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
         }
 
-        #convertButton{
-            background-color: rgb(82, 81, 81);
+        .skills div,.skills img,.skills h3{
+            background-color: #f1d4c4;
+            color: rgb(175, 76, 36);
+        }
+
+        .flex_item{
+            margin-right: 30px;
+            
+        }
+        .flex_item img{
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .projects h3,.projects div,.projects p{
+            background-color: #ca939e;
+            color: white;
+        }
+
+        .projects h3{
+            color: rgb(117, 24, 81);
+            margin-bottom: 5px;
+        }
+        .myprojects{
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .project1{
+            display: flex;
+            padding: 10px;
             border: 1px solid white;
             border-radius: 10px;
-            color: white;
-            padding: 5px;
-            cursor: pointer;
+            margin-bottom: 5px;
         }
 
-        .main input,.main select{
-            /* border: 2.5px solid white; */
-            border-radius: 8px;
-            padding: 1px; 
-            height: 25px;
-            box-shadow: 5px 5px black; 
+        .project2{
+            display: flex;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 10px;
         }
-        .main select{
-            cursor: pointer;
+
+        .project_img img{
+            height: 200px;
+            width: 400px;
+            margin-right: 10px;
+            border-radius: 10px;
         }
+
+        .projects p{
+            text-align: justify;
+        }
+
         
     </style>
 </head>
 
 <body>
-    <div class="vcenter">
-    <h1 class="title">Temperature Converter</h1>
-    <div class="main">
-        <input type="text" id="temperatureInput" placeholder="Enter Temperature">
-        <div class="inputscale">
-            <label for="inputscale">From</label>
-            <select name="inputscale" id="inputscale">
-                <option value="Celsius">Degree Celsius</option>
-                <option value="Fahrenheit">Fahrenheit</option>
-                <option value="Kelvin">Kelvin</option>
-            </select>
+    <nav class="navbar">
+        <div class="title">
+            <h1>Portfolio</h1>
         </div>
-        
-        <div class="outputscale">
-            <label for="outputscale">To</label>
-            <select name="outputscale" id="outputscale">
-                <option value="Celsius">Degree Celsius</option>
-                <option value="Fahrenheit">Fahrenheit</option>
-                <option value="Kelvin">Kelvin</option>
-            </select>
+        <ul>
+            <li><a href="#about">About me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+    <div class="center">
+        <div class="main">
+            <div class="item1">
+                <div class="name">
+                    <h1 class="heading typing-effect">Hello, I'm Kovuri Srujana</h1>
+                </div>
+                <div class="about" id="about">
+                    <h1>About Me</h1>
+                    <p>I am a second year student pursuing computer science and engineering in Chaitanya Bharathi
+                        Institute of Technology</p>
+                    <div class="accounts">
+                        <ul>
+                            <li><a href="https://github.com/ksrujana04">Github</a></li>
+                            <li><a href="https://www.linkedin.com/in/kovuri-srujana-902176273/">LinkedIn</a></li>
+                            <li><a href="mailto:srujana4619@gmail.com">Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="item2">
+                <div class="profile_photo"><img src="profile.jpeg" alt="profile photo"></div>
+            </div>
         </div>
-        <button id="convertButton">Convert</button>
-        <p id="result">Converted Temperature: </p>
+        <hr>
+        <div class="edu_details" id="education">
+            <h1>Educational Detalis</h1>
+            <div class="grades">
+                <div class="gg">
+                    <p>Bachelor of engineering</p>
+                    <p>Chaitanya Bharathi Institute of Technology</p>
+                    <p>98.5%</p>
+                </div>
+                <div class="gg">
+                    <p>Intermmediate</p>
+                    <p>Sri Chaitanya Junior kalashala</p>
+                    <p>98.8%</p>
+                </div>
+                <div class="gg">
+                    <p>SSC</p>
+                    <p>Good Samaritan High School</p>
+                    <p>10.0</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills" id="skills">
+            <h1>Skills</h1>
+            <div class="skills_flex">
+                <div class="flex_item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png"
+                        alt="python">
+                    <h3>Python</h3>
+                </div>
+                <div class="flex_item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/800px-HTML5_Badge.svg.png"
+                        alt="html">
+                    <h3>HTML</h3>
+                </div>
+                <div class="flex_item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png"
+                        alt="CSS">
+                    <h3>CSS</h3>
+                </div>
+                <div class="flex_item">
+                    <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/java_logo_icon_169577.png" alt="java">
+                    <h3>Java</h3>
+                </div>
+            </div>
+        </div>
+        <div class="projects" id="projects">
+            <h1>Projects</h1>
+            <div class="myprojects">
+            <div class="project1">
+                <div class="project_img"><img src="project1.png" alt="project1"></div>
+                <div class="description">
+                    <h3>Online integrated platform for projects taken up by the students of various universities
+                        /colleges
+                    </h3>
+                    <p>Innovation is the key to betterment of education and students in the Indian universities/colleges
+                        put a lot of efforts on the projects as a part of the academic requirements. If a common
+                        knowledge platform (with a facility for plagiarism) is created to bring all project works taken
+                        up at various levels by the students in Technical / Higher Educational Institutes and
+                        Universities throughout the country, then it will be a great source of knowledge and also will
+                        help the student community to take up unique/innovative project works</p>
+                </div>
+            </div>
+            <div class="project2">
+                <div class="project_img"><img src="project2.png" alt="project2"></div>
+                <div class="description">
+                    <h3>Neighborhood Safety Network platform to empower residents in enhancing community safety</h3>
+                    <p>Develop an online platform that enables residents to report safety incidents, receive real-time
+                        safety alerts, communicate with neighbors, and collaborate with local law enforcement. This
+                        platform should facilitate residents in reporting safety incidents, staying updated with
+                        real-time safety alerts, communicating with neighbors, and coordinating with local law
+                        enforcement. Key features include incident reporting, safety alerts, community chat, community
+                        engagement, safety resources, and integration with law enforcement. This platform aims to
+                        enhance community safety and connectivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
-</div>
-    <script>
-        document.getElementById("convertButton").addEventListener("click", function () {
-            const inputScale = document.getElementById("inputscale").value;
-            const outputScale = document.getElementById("outputscale").value;
-            const temperatureInput = parseFloat(document.getElementById("temperatureInput").value);
-
-            // Perform the temperature conversion
-            let result;
-
-            if (inputScale === "Celsius" && outputScale === "Fahrenheit") {
-                result = (temperatureInput * 9 / 5) + 32;
-            } else if (inputScale === "Celsius" && outputScale === "Kelvin") {
-                result = temperatureInput + 273.15;
-            } else if (inputScale === "Fahrenheit" && outputScale === "Celsius") {
-                result = (temperatureInput - 32) * 5 / 9;
-            } else if (inputScale === "Fahrenheit" && outputScale === "Kelvin") {
-                result = (temperatureInput - 32) * 5 / 9 + 273.15;
-            } else if (inputScale === "Kelvin" && outputScale === "Celsius") {
-                result = temperatureInput - 273.15;
-            } else if (inputScale === "Kelvin" && outputScale === "Fahrenheit") {
-                result = (temperatureInput - 273.15) * 9 / 5 + 32;
-            } else {
-                result = temperatureInput;
-            }
-
-            document.getElementById("result").textContent = `Converted Temperature: ${result} ${outputScale}`;
-        });
-    </script>
+    
 </body>
 
 </html>
